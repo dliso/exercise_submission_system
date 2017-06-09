@@ -35,11 +35,13 @@
     </div>
 </div>
 
+{% if user.is_authenticated %}
 <div class="card card-content">
     <a class="button" href="handin">Hand in</a>
     {% block hand_in %}
     {% endblock %}
 </div>
+{% endif %}
 
 
 {% endblock %}

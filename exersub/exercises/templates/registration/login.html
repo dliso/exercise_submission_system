@@ -1,0 +1,16 @@
+{% extends 'exercises/index.html' %}
+
+{% block content %}
+
+<form action="/login/" method="post">
+    <ul>
+        {% csrf_token %}
+        {{ form.as_ul }}
+
+        <li>
+            <input class="button" name="" type="submit" value="Submit"/>
+        </li>
+    </ul>
+</form>
+
+{% endblock %}

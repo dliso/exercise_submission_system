@@ -1,6 +1,8 @@
 from django import forms
 from django.forms import ModelForm
 
+from django.contrib.auth.models import User
+
 from .models import Exercise, Group, Handin
 
 class ExerciseForm(ModelForm):
@@ -19,3 +21,8 @@ class HandinForm(ModelForm):
     class Meta:
         model = Handin
         fields = ['text']
+
+class LoginForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password']

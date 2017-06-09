@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Exercise, Group, Handin
-from .forms import ExerciseForm, GroupForm, HandinForm
+from .forms import ExerciseForm, GroupForm, HandinForm, LoginForm
 
 # Create your views here.
 
@@ -67,3 +67,14 @@ def hand_in_exercise(request, ex_pk):
     else:
         form = HandinForm()
     return render(request, 'exercises/hand_in_exercise.html', context(ex_pk=ex_pk, form=form))
+
+def logout(request):
+    logout()
+    return HttpResponseRedirect('/')
+
+def login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+    else:
+        form = LoginForm()
+    return render(request, 'registration/login.html', context())

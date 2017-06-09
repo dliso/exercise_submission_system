@@ -25,7 +25,7 @@ SECRET_KEY = 'a$h=&6h*5su%+vx1t5mjw#b=ph0_@h^e&$0i5pbj&*%8dth!4i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ 'danielli.pythonanywhere.com' ]
+ALLOWED_HOSTS = [ 'danielli.pythonanywhere.com', 'localhost' ]
 
 
 # Application definition
@@ -119,3 +119,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

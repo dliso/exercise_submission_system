@@ -45,7 +45,7 @@ class Evaluation(models.Model):
 
 class Exercise(models.Model):
     author = models.ForeignKey(CUser)
-    creation_date = models.DateTimeField(timezone.now())
+    creation_date = models.DateTimeField(auto_now=True)
     text = models.TextField()
     title = models.CharField(max_length=200)
 

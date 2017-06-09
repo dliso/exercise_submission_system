@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from .models import Exercise, Group
+from .models import Exercise, Group, Handin
 
 class ExerciseForm(ModelForm):
     class Meta:
@@ -13,3 +13,9 @@ class GroupForm(ModelForm):
     class Meta:
         model = Group
         fields = ['members']
+
+
+class HandinForm(ModelForm):
+    class Meta:
+        model = Handin
+        fields = ['text']

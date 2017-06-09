@@ -29,12 +29,18 @@ class Group(models.Model):
 
 
 class Handin(models.Model):
-    group = models.ForeignKey(Group)
-    evaluator_group = models.ForeignKey(Group, related_name='evaluator_of')
-    evaluation = models.ForeignKey('Evaluation')
-    handin_date = models.DateTimeField(timezone.now())
+    creator = models.ForeignKey(CUser)
+    group = models.ForeignKey(Group, null=True, blank=True)
+    evaluator_group = models.ForeignKey(Group, related_name='evaluator_of', null=True, blank=True)
+    evaluation = models.ForeignKey('Evaluation', blank=True, null=True)
+    handin_date = models.DateTimeField(auto_now=True)
     text = models.TextField()
     exercise = models.ForeignKey('Exercise')
+
+    def __str__(self):
+        s = self.text
+        s2 = s if len(s) < 50 else s[47] + '...'
+        return self.exercise.title + ': ' + s2
 
 
 class Evaluation(models.Model):

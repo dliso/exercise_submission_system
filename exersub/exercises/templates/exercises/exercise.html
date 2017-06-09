@@ -2,23 +2,44 @@
 
 {% block content %}
 
-<h1 class="title">{{active_exercise.title}}</h1>
-<h2 class="subtitle">
-    <div>
-        {{ active_exercise.author.user.first_name }}
-        {{ active_exercise.author.user.last_name }}
-    </div>
-    <div>
-        {{ active_exercise.creation_date }}
-    </div>
-</h2>
+<div class="card card-content">
+    <h1 class="title">{{active_exercise.title}}</h1>
+    <h2 class="subtitle">
+        <small>
+            {{ active_exercise.author.user.first_name }}
+            {{ active_exercise.author.user.last_name }}
+            -
+            {{ active_exercise.creation_date }}
+        </small>
+    </h2>
 
-<div>
-    {{active_exercise.text}}
+    <div>
+        {{active_exercise.text}}
+    </div>
 </div>
 
-<div>
+<div class="card card-content">
+    <div>
+        <h1 class="title">Current revision</h1>
+        <h2 class="subtitle">
+            {{current_handin.creator.user.first_name}}
+            {{current_handin.creator.user.last_name }}
+        </h2>
+        <div>
+            {% if current_handin %}
+            {{current_handin.text}}
+            {% else %}
+            Nothing handed in yet.
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="card card-content">
     <a class="button" href="handin">Hand in</a>
+    {% block hand_in %}
+    {% endblock %}
 </div>
+
 
 {% endblock %}

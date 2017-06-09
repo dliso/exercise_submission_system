@@ -4,15 +4,14 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css" integrity="sha256-tzp6mtxeugpv7nF5uY4rqr1ZxZynL8F7G5MCwYxJkmY=" crossorigin="anonymous" />
-        <title>Exercise Submission System</title>
+        <title>Exercise Submission</title>
     </head>
 
     <body>
 
         <nav class="nav has-shadow">
             <div class="nav-left">
-                <a class="nav-item" href="/">ESS</a>
-                <a class="nav-item" href="/">{{request.path}}</a>
+                <a class="nav-item" href="/">Exercise Submission</a>
             </div>
             <div class="nav-right">
                 {% if user.is_authenticated %}

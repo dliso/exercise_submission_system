@@ -1,0 +1,23 @@
+{% extends 'exercises/exercise.html' %}
+
+{% block hand_in %}
+
+<h1 class="title">Hand in exercise</h1>
+
+<div>
+    <form action="/exercise/{{active_exercise.pk}}/handin/" method="post">
+        {% csrf_token %}
+
+        <div class="field">
+            <label class="label"> {{ form.text.label }} </label>
+            <p class="control">
+                {{ form.text }}
+            </p>
+        </div>
+
+
+        <input class="button" name="" type="submit" value="Submit"/>
+    </form>
+</div>
+
+{% endblock %}

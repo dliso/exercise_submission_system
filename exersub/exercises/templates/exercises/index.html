@@ -43,17 +43,6 @@
                         {% endif %}
 
                     </ul>
-                    <p class="menu-label">
-                        Groups
-                    </p>
-                    <ul class="menu-list">
-                        {% for g in groups %}
-                        <li>
-                            <a class="{{g.style}}" href="/groups/{{g.pk}}"> {{ g.id }} </a>
-                        </li>
-                        {% endfor %}
-                        <li><a href="/groups/create">+ Create group</a></li>
-                    </ul>
                 </aside>
             </div>
 

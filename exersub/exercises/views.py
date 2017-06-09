@@ -46,20 +46,3 @@ def add_exercise(request):
     else:
         form = ExerciseForm()
     return render(request, 'exercises/add_exercise.html', context(form=form))
-
-def create_group(request):
-    if request.method == 'POST':
-        form = GroupForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            group = form.save(commit=False)
-            group.creator = request.user.cuser
-            group.save()
-            form.save_m2m()
-            return HttpResponseRedirect('/')
-    else:
-        form = GroupForm()
-    return render(request, 'exercises/create_group.html', context(form=form))
-
-def group(request, pk):
-    return render(request, 'exercises/group.html', context(grp_pk=pk))

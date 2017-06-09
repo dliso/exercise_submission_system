@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^exercise/add/$', views.add_exercise, name='add_exercise'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^login/$', auth_views.login, name='login'),
+    url(r'^signup/$', views.signup, name='signup'),
 ]

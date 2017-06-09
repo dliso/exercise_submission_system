@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .models import Exercise, Group, Handin
-from .forms import ExerciseForm, GroupForm, HandinForm, LoginForm
+from django.contrib.auth import login
+from .models import Exercise, Group, Handin, CUser
+from .forms import ExerciseForm, GroupForm, HandinForm, LoginForm, SignupForm
 
 # Create your views here.
 
@@ -72,9 +73,14 @@ def logout(request):
     logout()
     return HttpResponseRedirect('/')
 
-def login(request):
+def signup(request):
     if request.method == 'POST':
-        form = LoginForm(request.POST)
-    else:
-        form = LoginForm()
-    return render(request, 'registration/login.html', context())
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            new_cuser = CUser(user=new_user)
+            new_cuser.save()
+            login(request, new_user)
+            return HttpResponseRedirect('/')
+    form = SignupForm()
+    return render(request, 'registration/signup.html', context(form=form))

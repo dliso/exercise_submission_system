@@ -12,6 +12,10 @@ def context(ex_pk=None, grp_pk=None, form=None):
     cont = {}
     cont['exercises'] = exercises
     cont['groups'] = groups
+    if ex_pk == 'latest':
+        ex = exercises.latest('creation_date')
+        cont['active_exercise'] = ex
+        ex_pk = ex.id
     if ex_pk:
         ex = exercises.get(pk=ex_pk)
         cont['active_exercise'] = ex
@@ -34,7 +38,7 @@ def context(ex_pk=None, grp_pk=None, form=None):
     return cont
 
 def index(request):
-    return render(request, 'exercises/index.html', context())
+    return render(request, 'exercises/exercise.html', context(ex_pk='latest'))
 
 def exercise(request, pk):
     # ex.style = 'is-active'

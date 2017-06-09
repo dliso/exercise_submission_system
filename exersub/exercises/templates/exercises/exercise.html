@@ -20,7 +20,7 @@
 
 <div class="card card-content">
     <div>
-        <h1 class="title">Current revision</h1>
+        <h1 class="title">Current answer</h1>
         <h2 class="subtitle">
             {{current_handin.creator.user.first_name}}
             {{current_handin.creator.user.last_name }}
@@ -29,7 +29,7 @@
             {% if current_handin %}
             {{current_handin.text}}
             {% else %}
-            Nothing handed in yet.
+            Not answered yet.
             {% endif %}
         </div>
     </div>

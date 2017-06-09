@@ -25,7 +25,7 @@ class CUser(models.Model):
 class Group(models.Model):
     creator = models.ForeignKey(CUser, related_name='creator_of')
     members = models.ManyToManyField(CUser, related_name='member_of')
-    creation_date = models.DateTimeField(timezone.now())
+    creation_date = models.DateTimeField(auto_now=True)
 
 
 class Handin(models.Model):
@@ -40,7 +40,7 @@ class Handin(models.Model):
 class Evaluation(models.Model):
     group = models.ForeignKey(Group)
     text = models.TextField()
-    creation_date = models.DateTimeField(timezone.now())
+    creation_date = models.DateTimeField(auto_now=True)
 
 
 class Exercise(models.Model):
@@ -48,6 +48,8 @@ class Exercise(models.Model):
     creation_date = models.DateTimeField(auto_now=True)
     text = models.TextField()
     title = models.CharField(max_length=200)
+
+    style = ''
 
     def __str__(self):
         return self.title

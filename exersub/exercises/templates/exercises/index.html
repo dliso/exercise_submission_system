@@ -12,7 +12,7 @@
         <nav class="nav has-shadow">
             <div class="nav-left">
                 <a class="nav-item" href="/">ESS</a>
-                    <a class="nav-item" href="/">{{request.path}}</a>
+                <a class="nav-item" href="/">{{request.path}}</a>
             </div>
             <div class="nav-right">
                 {% if user.is_authenticated %}
@@ -34,7 +34,7 @@
                     <ul class="menu-list">
                         {% for e in exercises %}
                         <li>
-                            <a class="" href="/exercise/{{e.pk}}">{{e.title}}</a>
+                            <a class="{{e.style}}" href="/exercise/{{e.pk}}">{{e.title}}</a>
                         </li>
                         {% endfor %}
 
@@ -42,15 +42,23 @@
                         <li><a class="" href="/exercise/add">+ Add exercise</a></li>
                         {% endif %}
 
-                        </ul>
-                        <p class="menu-label">
-                            Groups
-                        </p>
+                    </ul>
+                    <p class="menu-label">
+                        Groups
+                    </p>
+                    <ul class="menu-list">
+                        {% for g in groups %}
+                        <li>
+                            <a class="{{g.style}}" href="/groups/{{g.pk}}"> {{ g.id }} </a>
+                        </li>
+                        {% endfor %}
+                        <li><a href="/groups/create">+ Create group</a></li>
+                    </ul>
                 </aside>
             </div>
 
             <div class="column section">
-                {% block exercise %}
+                {% block content %}
                 {% endblock %}
             </div>
 

@@ -1,0 +1,17 @@
+{% extends 'exercises/index.html' %}
+
+{% block content %}
+
+<h1 class="title">Group members</h1>
+
+<div>
+    <ul>
+        {% for member in members %}
+        <li>
+            {{member.user.first_name}} {{member.user.last_name}}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

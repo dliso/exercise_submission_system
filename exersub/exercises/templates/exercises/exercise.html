@@ -1,11 +1,24 @@
 {% extends 'exercises/index.html' %}
 
-{% block exercise %}
+{% block content %}
 
 <h1 class="title">{{active_exercise.title}}</h1>
+<h2 class="subtitle">
+    <div>
+        {{ active_exercise.author.user.first_name }}
+        {{ active_exercise.author.user.last_name }}
+    </div>
+    <div>
+        {{ active_exercise.creation_date }}
+    </div>
+</h2>
 
 <div>
     {{active_exercise.text}}
+</div>
+
+<div>
+    <a class="button" href="handin">Hand in</a>
 </div>
 
 {% endblock %}

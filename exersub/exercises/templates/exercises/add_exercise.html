@@ -1,14 +1,18 @@
 {% extends 'exercises/index.html' %}
 
-{% block exercise %}
+{% block content %}
 
 <h1 class="title">Add a new exercise</h1>
 
 <div>
     <form action="/exercise/add/" method="post">
         {% csrf_token %}
-        {{ form }}
-        <input name="" type="submit" value="Submit"/>
+        <div>
+            <ul>
+                {{ form.as_ul }}
+                <input name="" type="submit" value="Submit"/>
+                </ul>
+        </div>
     </form>
 </div>
 

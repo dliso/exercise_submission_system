@@ -1,0 +1,17 @@
+{% extends 'exercises/index.html' %}
+
+{% block content %}
+
+<h1 class="title">Create a group</h1>
+
+<form action="/groups/create/" method="post">
+    {% csrf_token %}
+    <div>
+        <ul>
+            {{ form.as_ul }}
+        </ul>
+        <input name="" type="submit" value="Submit"/>
+    </div>
+</form>
+
+{% endblock %}
